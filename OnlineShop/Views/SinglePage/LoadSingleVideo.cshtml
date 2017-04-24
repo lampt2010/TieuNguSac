@@ -1,0 +1,77 @@
+﻿@model Model.EF.SinglePage
+@{
+    ViewBag.Title = "LoadSingleVideo";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+<!-- Breakcrumb -->
+<section class="breakcrumb">
+    <div class="container">
+        <ul>
+            <li><a href="#" tiltle="trang chủ">Trang chủ</a></li>
+            <li ><a href="/danh-sach/video"> Video</a></li>
+        </ul>
+    </div>
+</section>
+<!-- List gioi thieu -->
+<section class="wraper">
+    <div class="container">
+        <div class="gt_tomtat">
+            <h1>@Model.Name</h1>
+            <div class="gt_desc">
+              @Model.Description
+            </div>
+        </div>
+        <!-- Detail video -->
+        <div class="detail_video">
+            <div class="video_box">
+               @Html.Raw(HttpUtility.HtmlDecode(Model.Content))
+            </div>
+        </div>
+        <!-- Social share -->
+
+        <div class="detail_dff">
+            <div class="left_dff">
+                <a href="#" title="">
+                    <img src="asset/images/icon/icon-back-home.png" alt="">Trang chủ
+                </a>
+                <a href="#" id="back-to-top">
+                    <img src="asset/images/icon/icon-back-to-top.png" alt="">
+                    Lên đầu trang
+                </a>
+            </div>
+            <div class="right_dff">
+                <span>Chia sẻ:</span>
+                <ul>
+
+                    <li>
+                        <a href="#" title>
+                            <i class="fa fa-facebook" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" title>
+                            <i class="fa fa-google-plus" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" title>
+                            <i class="fa fa-twitter" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Relate video -->
+        <div class="relate_video_container">
+            <div class="relate_video_title">
+                <span class="r_video_button r_video_bt_next"><i class="fa fa-angle-double-left" aria-hidden="true"></i></span>
+                <h2 class="header_title">CÁC VIDEO KHÁC</h2>
+                <span class="r_video_button r_video_bt_prev"><i class="fa fa-angle-double-right" aria-hidden="true"></i></span>
+            </div>
+            <div class="relate_video_box swiper-container">
+            </div>
+        </div>
+    </div>
+</section>
+

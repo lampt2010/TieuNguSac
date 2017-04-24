@@ -1,0 +1,175 @@
+﻿@model IEnumerable<Model.EF.Category>
+@using Model.Dao;
+@{
+    ViewBag.Title = "Index1";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+@functions{
+    public string GetContent(long id)
+    {
+        string s = "<ul class='list_home_news'>";
+
+
+        //<li><a href = "#" title="">Uống trà Thái Nguyên giúp làm giảm cholesterol</a> <span>(3.929 lượt xem)</span></li>
+        //<li><a href = "#" title="">Chè Thái Nguyên giúp chắc khoẻ xương</a> <span>(3.929 lượt xem)</span></li>
+        //<li><a href = "#" title="">Trà giúp người bệnh tim khỏe hơn</a><span>(3.929 lượt xem)</span></li>
+        //<li><a href = "#" title="">Trà giúp người bệnh tim khỏe hơn</a><span>(3.929 lượt xem)</span></li>
+
+        var list = new ContentDao().GetAllByCategory(id);
+        if (list.Count > 0)
+        {
+            s += "<li>";
+            s += "<div class='home_news_img'>";
+            s += "<img src = '" + list[0].Image + "' alt='" + list[0].Name + "'>";
+            s += "</div>";
+
+
+            s += "<div class='home_news_info'>";
+            s += "<h3 class='home_news_name'>";
+            s += "<a href = '/tin-tuc/" + list[0].MetaTitle + "-d." + list[0].ID + "' title='" + list[0].Name + "'>" + list[0].Name + "</a>";
+            s += "    </h3>";
+            s += "<p class='date'>" + list[0].CreatedDate.ToString() + " - " + list[0].ViewCount + " lượt xem</p>";
+            s += "<p class='desc'>";
+            s += list[0].Description;
+
+            s += "</p>";
+
+            s += "<div class='view_more'>";
+            s += "<a href = '/tin-tuc/" + list[0].MetaTitle + "-d." + list[0].ID + "' title='" + list[0].Name + "'>Chi tiết<i class='fa fa-angle-right' aria-hidden='true'></i></a>";
+            s += "     </div>";
+            s += "   </div>";
+            s += "</li>";
+        }
+        for(int i = 1; i < list.Count; i++)
+        {
+            s+= "<li><a href = 'tin-tuc/"+list[i].MetaTitle+"-d."+list[i].ID+"' title='"+list[0].Name+"'>"+list[i].Name+"</a> <span>("+list[i].ViewCount+" lượt xem)</span></li>";
+        }
+
+        s+="</ul>";
+        return s;
+    }
+}
+
+
+
+
+<!-- Breakcrumb -->
+<section class="breakcrumb">
+    <div class="container">
+        <ul>
+            <li><a href="#" tiltle="trang chủ">Trang chủ</a></li>
+            <li>Tư vấn - Tin tức</li>
+        </ul>
+    </div>
+</section>
+<!--chi tiet sản phẩm -->
+<section class="wraper">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-4 col-xs-12">
+                <div class="sidebar">
+                    @{ Html.RenderAction("ProductCategory1", "Product");}
+                    <div class="adv">
+                        <a href="#" title="trà thảo mộc">
+                            <img src="asset/images/show-room/big-sr.jpg" alt="">
+                            <h3 class="adv-name">Trà thảo mộc</h3>
+                        </a>
+                    </div>
+                    <div class="tintuc_noibat">
+                        <h2 class="title_danh_muc ttnb_title">Tin tức nổi bật</h2>
+                        <ul class="list_ttnb">
+                            <li>
+                                <a href="#" title="">
+                                    <img src="asset/images/show-room/big-sr.jpg" alt="">
+                                    <h4 class="ttnb_name">
+                                        Văn hóa uống trà xưa và nay của người việt
+                                    </h4>
+                                    <p class="ttnb_dff">
+                                        20/06/2014 - 2.920 lượt xem
+                                    </p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" title="">
+                                    Những hộp trà đẹp, tinh xảo trang trọng cho giỏ quà Tết ý nghĩa
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" title="">
+                                    Nghệ thuật trà trong đời sống Văn hóa người Việt
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" title="">
+                                    Nghệ thuật trà trong đời sống Văn hóa người Việt
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9 col-sm-8 col-xs-12">
+                <div class="home_news">
+@foreach (var item in Model)
+{
+    <div class="home_news_container">
+        <div class="home_news_title">
+            <h2 class="title">Trà và sức khỏe</h2>
+            <span><a href="/tin-tuc/@item.MetaTitle-c.@item.ID" title="">Xem tất cả ></a></span>
+        </div>
+        @GetContent(item.ID)
+    </div>
+
+
+}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+@if (ViewBag.TotalPage > 1)
+{
+    var pageDisplay = (int)ViewBag.MaxPage;
+    int totalPage = (int)ViewBag.TotalPage;
+    int currentPage = ((int)ViewBag.Page);
+
+    // Create numeric links
+    var startPageIndex = Math.Max(1, currentPage - pageDisplay / 2);
+    var endPageIndex = Math.Min(totalPage, currentPage + pageDisplay / 2);
+
+    var link = "/tin-tuc";
+    <nav>
+        <ul class="pagination">
+            @if (currentPage > ViewBag.First)
+                {
+                <li><a href="@link?page=@ViewBag.First" title="Trang đầu" class="first"><i class="fa fa-angle-double-left"></i></a></li>
+                    <li>
+                        <a href="@link?page=@ViewBag.Prev" title="Trang trước" class="prev"><i class="fa fa-angle-left"></i></a>
+                    </li>
+
+            }
+            @for (int i = startPageIndex; i <= endPageIndex; i++)
+                {
+                    if (currentPage == i)
+                    {
+
+                    <li> <a href="@link?page=@i" class="active" title="Trang @i">@i</a></li>
+                }
+                else
+                {
+                    <li><a href="@link?page=@i" title="Trang @i" class="pos">@i</a></li>
+                }
+            }
+            @if (currentPage < totalPage)
+                {
+                <li><a href="@link?page=@ViewBag.Next" class="next" title="Trang sau"><i class="fa fa-angle-right"></i></a></li>
+                    <li> <a href="@link?page=@ViewBag.Last" class="last" title="Trang cuối"><i class="fa fa-angle-double-right"></i></a></li>
+            }
+
+        </ul>
+    </nav>
+
+}

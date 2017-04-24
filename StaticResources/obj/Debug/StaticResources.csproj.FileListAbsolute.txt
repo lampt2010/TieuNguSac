@@ -1,0 +1,9 @@
+D:\angular\TuanGay\Code\StaticResources\bin\Debug\StaticResources.dll
+D:\angular\TuanGay\Code\StaticResources\bin\Debug\StaticResources.pdb
+D:\angular\TuanGay\Code\StaticResources\bin\Debug\en\StaticResources.resources.dll
+D:\angular\TuanGay\Code\StaticResources\obj\Debug\StaticResources.Resources.resources
+D:\angular\TuanGay\Code\StaticResources\obj\Debug\StaticResources.Resources.en.resources
+D:\angular\TuanGay\Code\StaticResources\obj\Debug\StaticResources.csproj.GenerateResource.Cache
+D:\angular\TuanGay\Code\StaticResources\obj\Debug\en\StaticResources.resources.dll
+D:\angular\TuanGay\Code\StaticResources\obj\Debug\StaticResources.dll
+D:\angular\TuanGay\Code\StaticResources\obj\Debug\StaticResources.pdb

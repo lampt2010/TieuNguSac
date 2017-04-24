@@ -1,0 +1,134 @@
+﻿
+@model List<Model.EF.Menu>
+
+<head class="header">
+    <!-- top header -->
+    <div class="top_header">
+        <div class="container">
+            <div class="top-header-box">
+                <div class="top_menu_left">
+                    <nav class="top_menu">
+                        <ul class="top_nav_menu">
+                            @*<li><a href="#" title="">Trang chủ</a></li>
+                            <li><a href="#" title="">Gíơi thiệu</a></li>
+                            <li><a href="#" title="">Showroom</a></li>
+                            <li><a href="#" title="">Hệ thống cửa hàng</a></li>
+                            <li><a href="#" title="">Tư vấn - Tin tức</a></li>
+                            <li><a href="#" title="">Thư viện ảnh</a></li>
+                            <li><a href="#" title="">Video</a></li>
+                            <li><a href="#" title="">Liên hệ</a></li>*@
+                            @foreach (var item in Model)
+                             {
+                                <li><a href="@item.Link" target="@item.Target">@item.Text</a></li>
+                            }
+
+
+
+                        </ul>
+                    </nav>
+                </div>
+                <div class="top_menu_right">
+                    <div class="language">
+                        <a href="#" title="JP"><img src="~/assets/images/icon/l-vietnam.png" alt=""></a>
+                        <a href="#" title="vi"><img src="~/assets/images/icon/l-japan.png" alt=""></a>
+                    </div>
+                    <div class="phone">
+                        <div class="icon_phone"><i class="fa fa-mobile" aria-hidden="true"></i></div>
+                        <div class="left_phone">
+                            <div class="hotline">
+                                Hotline
+                            </div>
+                            <div class="call_number">
+                                [84-4] 166 358 5135
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- middle header -->
+    <div class="middle-header">
+        <div class="container">
+            <div class="row header-box ">
+                <div class="col-md-5 col-sm-12 col-xs-12">
+                    <div class="logo">
+                        <a href="#" title="trang chủ">
+                            <img src="/assets/images/icon/logo.png" alt="">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-7 col-sm-12 col-xs-12">
+                    <div class="header_social">
+                        <ul>
+                            <li>
+                                <a href="#" title>
+                                    <i class="fa fa-facebook" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" title>
+                                    <i class="fa fa-twitter" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" title>
+                                    <i class="fa fa-google-plus" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" title>
+                                    <i class="fa fa-youtube" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="chinhsach_list">
+                        <ul>
+                            <li>
+                                <div class="chinhsach_icon">
+                                    <img src="/assets/images/icon/icon-transport.png" alt="">
+                                </div>
+                                <div class="chinhsach_content">
+                                    <h3 class="chinhsach_title">
+                                        MIỄN PHÍ GIAO HÀNG NỘI THÀNH
+                                    </h3>
+                                    <p class="chinhsach_desc">
+                                        Với đơn giá hơn 500.000 VNĐ
+                                    </p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="chinhsach_icon">
+                                    <img src="/assets/images/icon/icon-payment.png" alt="">
+                                </div>
+                                <div class="chinhsach_content">
+                                    <h3 class="chinhsach_title">
+                                        THANH TOÁN TRỰC TIẾP
+                                    </h3>
+                                    <p class="chinhsach_desc">
+                                        Khi nhận hàng
+                                    </p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="chinhsach_icon">
+                                    <img src="/assets/images/icon/icon-transport.png" alt="">
+                                </div>
+                                <div class="chinhsach_content">
+                                    <h3 class="chinhsach_title">
+                                        ĐỔI TRẢ HÀNG
+                                    </h3>
+                                    <p class="chinhsach_desc">
+                                        Trong 3 ngày
+                                    </p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @{ Html.RenderAction("MainMenu1", "Home");}
+</head>

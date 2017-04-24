@@ -1,0 +1,156 @@
+﻿<!-- Main content -->
+
+@model List<Model.EF.Product>
+<section class="cf_product">
+    <div class="container">
+        <div class="product_box">
+            <!-- Product box-->
+            <div class="cate_product">
+                <div class="cate_box">
+                    <div class="cate_img">
+                        <img src="assets/images/category-p/tra-xanh-thai-nguyen.jpg" alt="">
+                    </div>
+                    <div class="cate_info">
+                        <h2 class="cate_title">Trè thái nguyên</h2>
+                        <div class="product_control">
+                            <div class="product_button product_bt_next"><i class="fa fa-angle-right" aria-hidden="true"></i></div>
+                            <div class="product_button product_bt_prev"><i class="fa fa-angle-left" aria-hidden="true"></i></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="product_list_container">
+                <div class="tre_thai swiper-container">
+                    <div class="swiper-wrapper">
+
+                        @foreach (var item in Model)
+                        {
+                            var link = "/chi-tiet/" + item.MetaTitle + "-" + item.ID;
+                            @*<div class="grid_1_of_4 images_1_of_4">
+                                <a href="@link"><img src="@item.Images" alt="" /></a>
+                                <h2>@item.Name</h2>
+                                <span>@item.CateName</span>
+                                <div class="price-details">
+                                    <div class="price-number">
+                                        <p><span class="rupees">@(item.Price.HasValue ? item.Price.Value.ToString("N0") : "Liên hệ")</span></p>
+                                    </div>
+                                    <div class="add-cart">
+                                        <h4><a href="/gio-hang/@item.ID">Thêm vào giỏ</a></h4>
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
+
+                            </div>*@
+
+                            <div class="swiper-slide">
+                                <!-- Loop -->
+                                <div class="product_info">
+                                    <div class="product_img">
+                                        <a href="@link" title="@item.Name">
+                                            <img src="@item.Image" alt="@item.Name">
+                                        </a>
+                                    </div>
+                                    <div class="product_content">
+                                        <h3 class="product_name">
+                                            <a href="@link" title="">@item.Name </a>
+                                        </h3>
+
+                                        <div class="price">
+                                            Gía:
+                                            <span class="gia_goc"><del>@item.Price</del>VNĐ</span>
+                                            <span class="gia_ban">@item.PromotionPrice VNĐ</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                        }
+
+                        @*<div class="swiper-slide">
+                            <!-- Loop -->
+                            <div class="product_info">
+                                <div class="product_img">
+                                    <a href="#" title="">
+                                        <img src="assets/images/category-p/tra-tn/tra-thai-nguyen-01.png" alt="doi-tac-01">
+                                    </a>
+                                </div>
+                                <div class="product_content">
+                                    <h3 class="product_name">
+                                        <a href="" title="">Việt Cổ Trà Truyền Thống - Trà búp </a>
+                                    </h3>
+                                    <div class="price">
+                                        Gía:
+                                        <span class="gia_goc"><del>200000</del>VNĐ</span>
+                                        <span class="gia_ban">180.000 VNĐ</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <!-- Loop -->
+                            <div class="product_info">
+                                <div class="product_img">
+                                    <a href="#" title="">
+                                        <img src="assets/images/category-p/tra-tn/tra-thai-nguyen-01.png" alt="doi-tac-01">
+                                    </a>
+                                </div>
+                                <div class="product_content">
+                                    <h3 class="product_name">
+                                        <a href="" title="">Việt Cổ Trà Truyền Thống - Trà búp </a>
+                                    </h3>
+                                    <div class="price">
+                                        Gía:
+                                        <span class="gia_goc"><del>200000</del>VNĐ</span>
+                                        <span class="gia_ban">180.000 VNĐ</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <!-- Loop -->
+                            <div class="product_info">
+                                <div class="product_img">
+                                    <a href="#" title="">
+                                        <img src="assets/images/category-p/tra-tn/tra-thai-nguyen-01.png" alt="doi-tac-01">
+                                    </a>
+                                </div>
+                                <div class="product_content">
+                                    <h3 class="product_name">
+                                        <a href="" title="">Việt Cổ Trà Truyền Thống - Trà búp </a>
+                                    </h3>
+                                    <div class="price">
+                                        Gía:
+                                        <span class="gia_goc"><del>200000 </del>VNĐ</span>
+                                        <span class="gia_ban">180.000 VNĐ</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <!-- Loop -->
+                            <div class="product_info">
+                                <div class="product_img">
+                                    <a href="#" title="">
+                                        <img src="assets/images/category-p/tra-tn/tra-thai-nguyen-01.png" alt="doi-tac-01">
+                                    </a>
+                                </div>
+                                <div class="product_content">
+                                    <h3 class="product_name">
+                                        <a href="" title="">Việt Cổ Trà Truyền Thống - Trà búp </a>
+                                    </h3>
+                                    <div class="price">
+                                        Gía:
+                                        <span class="gia_goc"><del>200000</del> VNĐ</span>
+                                        <span class="gia_ban">180.000 VNĐ</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>*@
+                    </div>
+                </div>
+            </div>
+        </div> <!-- End product box-->
+    </div>
+</section>

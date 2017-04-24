@@ -1,0 +1,51 @@
+﻿<!-- Show room -->
+@model List<Model.EF.Slide>
+@{ 
+    string[] mang = Model[0].MoreImages.Split(',');
+
+
+}
+<section class="cf-showroom">
+    <div class="container">
+        <div class="cf_title border_bottom margin_bottom">
+            <h4 class="header_title">SHOWROOM</h4>
+        </div>
+        <div class="row">
+            <!-- Showroom Slider-->
+            <div class="col-md-6 col-sm-12 col-xs-12">
+                <div class="show_room_box swiper-container">
+                    <div class="swiper-wrapper">
+                        @foreach (string m in mang)
+                        {
+                            <div class="swiper-slide">
+                                <!-- Loop -->
+                                <div class="show_room_img border_img">
+                                    <img src="~/Uploads/@m" alt="">
+                                    <div class="show_room_name">
+                                        <a href="#" title="showroom">@Model[0].Name</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        }
+                        
+                    </div>
+                    <!-- showroom control -->
+                    <div class="showroom_button showroom_bt_next"><i class="fa fa-angle-right" aria-hidden="true"></i></div>
+                    <div class="showroom_button showroom_bt_prev"><i class="fa fa-angle-left" aria-hidden="true"></i></div>
+                </div>
+            </div>
+            <!-- showroom image -->
+            <div class="col-md-6 col-sm-12 col-xs-12">
+                <ul class="cf_list_showroom row">
+                    @foreach (string m in mang)
+                    {
+                        <li class="col-md-4 col-sm-4 col-xs-6"><a href="#" title=""><div class="sm_showroom_img border_img"><img src="~/Uploads/@m" alt=""></div></a></li>
+
+                    }
+                
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>

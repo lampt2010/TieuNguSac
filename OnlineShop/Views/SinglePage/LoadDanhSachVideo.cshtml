@@ -1,0 +1,111 @@
+﻿@model List<Model.EF.SinglePage>
+@{
+    ViewBag.Title = "LoadDanhSachVideo";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+<section class="breakcrumb">
+    <div class="container">
+        <ul>
+            <li><a href="/" tiltle="trang chủ">Trang chủ</a></li>
+            <li>Danh mục sản phẩm</li>
+        </ul>
+    </div>
+</section>
+<!-- List gioi thieu -->
+<section class="wraper">
+    <div class="container">
+        <div class="gt_tomtat">
+            <h1>THƯ VIỆN ẢNH</h1>
+            <div class="gt_desc">
+                Được áp dụng quy trình sản xuất trà sạch VietGAP về các tiêu chí vệ sinh - an toàn thực phẩm  từ các khâu trồng, chăm sóc, chế biến và đóng gói sản phẩm. Chúng tôi mong muốn đưa đến người tiêu dùng những sản phẩm trà an toàn, có lợi cho sức khỏe.
+            </div>
+        </div>
+        <div class="dm_img_container">
+            <ul class="dm_img_box">
+@foreach (var item in Model)
+{
+    <li class="dm_img_content">
+        <div class="dm_img_info">
+            <div class="dm_img_thumb">
+                <div class="bg_olay"></div><!-- mask -->
+                <img src="@item.Image" alt="@item.Name">
+                <div class="dm_img_view">
+                   
+                    <p class="total_view">@item.ViewCount lượt xem</p>
+                </div>
+                <div class="icon_img_thumb">
+                    <img src="asset/images/icon/icon-video.png" alt="">
+                </div>
+            </div>
+            <div class="dm_img_name">
+                <h3 class="dm_img_title">
+                    <a href="/video/@item.MetaTitle-d.@item.Id" title="@item.Name">
+                       @item.Name
+                    </a>
+                </h3>
+            </div>
+        </div>
+    </li>
+
+
+}
+                
+             
+            </ul>
+            <!-- Paging -->
+       
+
+            @if (ViewBag.TotalPage > 1)
+            {
+                var pageDisplay = (int)ViewBag.MaxPage;
+                int totalPage = (int)ViewBag.TotalPage;
+                int currentPage = ((int)ViewBag.Page);
+
+                // Create numeric links
+                var startPageIndex = Math.Max(1, currentPage - pageDisplay / 2);
+                var endPageIndex = Math.Min(totalPage, currentPage + pageDisplay / 2);
+
+                var link = "/danh-sach/video";
+                <nav>
+                    <ul class="pagination">
+                        @if (currentPage > ViewBag.First)
+                {
+                            <li><a href="@link?page=@ViewBag.First" title="Trang đầu" class="first"><i class="fa fa-angle-double-left"></i></a></li>
+                            <li>
+                                <a href="@link?page=@ViewBag.Prev" title="Trang trước" class="prev"><i class="fa fa-angle-left"></i></a>
+                            </li>
+
+                        }
+                        @for (int i = startPageIndex; i <= endPageIndex; i++)
+                        {
+                            if (currentPage == i)
+                            {
+
+                                <li> <a href="@link?page=@i" class="active" title="Trang @i">@i</a></li>
+                            }
+                            else
+                            {
+                                <li><a href="@link?page=@i" title="Trang @i" class="pos">@i</a></li>
+                            }
+                        }
+                        @if (currentPage < totalPage)
+                        {
+                            <li><a href="@link?page=@ViewBag.Next" class="next" title="Trang sau"><i class="fa fa-angle-right"></i></a></li>
+                            <li> <a href="@link?page=@ViewBag.Last" class="last" title="Trang cuối"><i class="fa fa-angle-double-right"></i></a></li>
+                        }
+
+                    </ul>
+                </nav>
+
+            }
+            else
+            {
+                <span>Không có bản ghi nào</span>
+            }
+
+
+        </div>
+    </div>
+</section>
+

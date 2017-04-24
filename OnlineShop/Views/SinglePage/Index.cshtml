@@ -1,0 +1,138 @@
+﻿@model List<Model.EF.SinglePage>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+<section class="breakcrumb">
+    <div class="container">
+        <ul>
+            <li><a href="#" tiltle="trang chủ">Trang chủ</a></li>
+            <li>Danh mục sản phẩm</li>
+        </ul>
+    </div>
+</section>
+<!-- List gioi thieu -->
+<section class="wraper">
+    <div class="container">
+        <div class="gt_tomtat">
+            <h1>CHÀO MỪNG BẠN ĐẾN VỚI TIEUNGUSAC</h1>
+            <div class="gt_desc">
+                Được áp dụng quy trình sản xuất trà sạch VietGAP về các tiêu chí vệ sinh - an toàn thực phẩm  từ các khâu trồng, chăm sóc, chế biến và đóng gói sản phẩm. Chúng tôi mong muốn đưa đến người tiêu dùng những sản phẩm trà an toàn, có lợi cho sức khỏe.
+            </div>
+        </div>
+        <div class="gt_box">
+            <ul class="row gt_list">
+                @foreach (var item in Model)
+                {
+                    <li class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="gt_info">
+                            <div class="gt_img">
+                                <a href="/gioi-thieu/@item.MetaTitle" title="@item.Name">
+                                    <img src="@item.Image" alt="">
+                                </a>
+                            </div>
+                            <div class="gt_content">
+                                <h3 class="gt_name"><a href="/gioi-thieu/@item.MetaTitle" title="">@item.Name</a></h3>
+                                <p class="gt_excerpt">
+                                   @item.Description
+                                </p>
+                            </div>
+                        </div>
+                    </li>
+
+                }
+
+
+             
+            </ul>
+        </div>
+    </div>
+</section>
+<!-- Tai sao chon chung toi -->
+<section class="chungtoi_container">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="ct_box">
+                    <h2 class="ct_title">
+                        Tại sao chọn chúng tôi
+                    </h2>
+                    <ul class="ts_content">
+                        <li class="ts_title"><span class="ts_togle"></span></i>Chất lượng hoàn hảo</li>
+                        <li class="ts_info">Suspendisse sit amet elit lacinia, feugiat magna at, luctus massa. Aliquam sodales dictum nulla. consectetur adipiscing elit.</li>
+
+                        <li class="ts_title"><span class="ts_togle"></span></i>Dịch vụ tốt nhất</li>
+                        <li class="ts_info">Suspendisse sit amet elit lacinia, feugiat magna at, luctus massa. Aliquam sodales dictum nulla. consectetur adipiscing elit.</li>
+
+                        <li class="ts_title"><span class="ts_togle"></span></i>Gía cả cạnh tranh thị trường</li>
+                        <li class="ts_info">Suspendisse sit amet elit lacinia, feugiat magna at, luctus massa. Aliquam sodales dictum nulla. consectetur adipiscing elit.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="ct_box hdsk_mg_top">
+                    <h2 class="ct_title">
+                        Hoạt động sự kiện
+                    </h2>
+                    <ul class="hdsk_box">
+                        <li>
+                            <div class="hdsk_info">
+                                <div class="hdsk_calendar">
+                                    <div class="hdsk_month">Tháng 8</div>
+                                    <div class="hdsk_day">20</div>
+                                </div>
+                                <div class="hdsk_content">
+                                    <h4 class="hdsk_name">
+                                        <a href="#" title="">
+                                            Trà búp truyền thống - Thái Tâm Trà Truyền Thống
+                                        </a>
+                                    </h4>
+                                    <p class="hdsk_desc">
+                                        Đây là sản phẩm được sản xuất đại trà tại vùng chè Tân Cương, Thái Nguyên. Với quy chuẩn hái 1 tôm, 2 đến 3 lá, kết hợp cùng quy trình sao chế thủ công.
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="hdsk_info">
+                                <div class="hdsk_calendar">
+                                    <div class="hdsk_month">Tháng 8</div>
+                                    <div class="hdsk_day">20</div>
+                                </div>
+                                <div class="hdsk_content">
+                                    <h4 class="hdsk_name">
+                                        <a href="#" title="">
+                                            Trà búp truyền thống - Thái Tâm Trà Truyền Thống
+                                        </a>
+                                    </h4>
+                                    <p class="hdsk_desc">
+                                        Đây là sản phẩm được sản xuất đại trà tại vùng chè Tân Cương, Thái Nguyên. Với quy chuẩn hái 1 tôm, 2 đến 3 lá, kết hợp cùng quy trình sao chế thủ công.
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="hdsk_info">
+                                <div class="hdsk_calendar">
+                                    <div class="hdsk_month">Tháng 8</div>
+                                    <div class="hdsk_day">20</div>
+                                </div>
+                                <div class="hdsk_content">
+                                    <h4 class="hdsk_name">
+                                        <a href="#" title="">
+                                            Trà búp truyền thống - Thái Tâm Trà Truyền Thống
+                                        </a>
+                                    </h4>
+                                    <p class="hdsk_desc">
+                                        Đây là sản phẩm được sản xuất đại trà tại vùng chè Tân Cương, Thái Nguyên. Với quy chuẩn hái 1 tôm, 2 đến 3 lá, kết hợp cùng quy trình sao chế thủ công.
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

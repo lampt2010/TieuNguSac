@@ -1,0 +1,257 @@
+﻿@model Model.EF.Product
+@{
+    ViewBag.Title = "Detail1";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+    var category = (Model.EF.ProductCategory)ViewBag.Category;
+    var relatedProducts = (List<Model.EF.Product>)ViewBag.RelatedProducts;
+    string[] arr = null;
+    if (Model.MoreImages != null)
+    { arr = Model.MoreImages.Split(','); }
+
+
+}
+
+	<!-- Breakcrumb -->
+<section class="breakcrumb">
+    <div class="container">
+        <ul>
+            <li><a href="#" tiltle="trang chủ">Trang chủ</a></li>
+            <li><a href="/san-pham/@category.MetaTitle-@category.ID"> @category.Name</a></li>
+        </ul>
+    </div>
+</section>
+
+@section jsFooter{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.addItem').click(function () {
+                alert($('#Quantity').attr('data-id'));
+                alert($('#Quantity').val());
+                $.ajax({
+                    url: "/Cart/AddItem1",
+                    type: "post",
+                    dateType: "Json",
+                    data: {
+                     
+                        productId: $('#Quantity').attr('data-id'),
+                        quantity: $('#Quantity').val()
+                    },
+                    success: function (result) {
+                        if (result.result == "t") {
+                            alert('Đã thêm vào giỏ hàng thành công');
+                        } else {
+                            alert('Có lỗi xảy ra');
+                        }
+                    },
+                    error: function () {
+                        alert('thêm vào giỏ hàng thất bại');
+                    }
+                });
+            })
+        })
+        
+    </script>
+    }
+
+<!--chi tiet sản phẩm -->
+<section class="wraper">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-4 col-xs-12">
+                <div class="sidebar">
+                    @*<div class="list_danh_muc">
+                        <h2 class="title_danh_muc">DANH MỤC SẢN PHẨM</h2>
+                        <ul>
+                            <li><a href="#" title="">Trà thái nguyên</a></li>
+                            <li><a href="#" title="">Trà nhật</a></li>
+                            <li><a href="#" title="">Qùa biếu - Hộp quà</a></li>
+                            <li><a href="#" title="">Cà phê</a></li>
+                            <li><a href="#" title="">Hạt tiêu</a></li>
+                        </ul>
+                    </div>*@
+                    @{ Html.RenderAction("ProductCategory1", "Product");}
+
+
+                    <div class="adv">
+                        <a href="#" title="trà thảo mộc">
+                            <img src="asset/images/show-room/big-sr.jpg" alt="">
+                            <h3 class="adv-name">Trà thảo mộc</h3>
+                        </a>
+                    </div>
+                    <div class="tintuc_noibat">
+                        <h2 class="title_danh_muc ttnb_title">Tin tức nổi bật</h2>
+                        <ul class="list_ttnb">
+                            <li>
+                                <a href="#" title="">
+                                    <img src="asset/images/show-room/big-sr.jpg" alt="">
+                                    <h4 class="ttnb_name">
+                                        Văn hóa uống trà xưa và nay của người việt
+                                    </h4>
+                                    <p class="ttnb_dff">
+                                        20/06/2014 - 2.920 lượt xem
+                                    </p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" title="">
+                                    Những hộp trà đẹp, tinh xảo trang trọng cho giỏ quà Tết ý nghĩa
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" title="">
+                                    Nghệ thuật trà trong đời sống Văn hóa người Việt
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" title="">
+                                    Nghệ thuật trà trong đời sống Văn hóa người Việt
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9 col-sm-8 col-xs-12">
+                <div class="chitiet_sp">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-12 col-xs-12">
+                            <div class="list_img_chitiet swiper-container">
+                                <div class="swiper-wrapper">
+                                    @if(arr!=null)
+                                    
+                                    {
+                                        foreach (string img in arr)
+                                        {
+                                            <div class="swiper-slide">
+                                                <!-- Loop -->
+                                                <div class="img_chitiet">
+                                                    <img src="~/Uploads/@img" alt="@Model.Name">
+                                                </div>
+                                            </div>
+
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <div class="swiper-slide">
+                                            <!-- Loop -->
+                                            <div class="img_chitiet">
+                                                <img src="@Model.Image" alt="@Model.Name">
+                                            </div>
+                                        </div>
+
+                                    }
+
+
+                                  
+                                </div>
+                                <!-- showroom control -->
+                                <div class="ctsp_button ctsp_bt_next"><i class="fa fa-angle-right" aria-hidden="true"></i></div>
+                                <div class="ctsp_button ctsp_bt_prev"><i class="fa fa-angle-left" aria-hidden="true"></i></div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12 col-xs-12">
+                            <div class="chitietsp_content">
+                                <h1 class="ctsp_title">
+                                  @Model.Name
+                                </h1>
+                                <p class="ctsp_price">
+                                    Gía:
+                                    <del>@Model.Price </del>
+                                    <span class="ctsp_sales">@Model.PromotionPrice VND</span>
+                                </p>
+                                <p class="ctsp_desc">
+                                  @Html.Raw(Model.Description)
+                                </p>
+                                <div class="ctsp_action">
+                                    Số lượng:
+                                    <input type="number" name="number" id="Quantity" data-id="@Model.ID" >
+                                    <a href="#" class="button_action stsp_add_cart addItem">
+                                        THÊM VÀO GIỎ HÀNG
+                                    </a>
+                                    <a href="#" class="button_action ctsp_mh addItem">MUA HÀNG</a>
+                                </div>
+
+                                <div class="ctsp_share">
+                                    Chia sẻ sản phẩm này:
+                                    <img src="asset/images/share.jpg" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab_single_sp" id="horizontalTab">
+                    <ul>
+                        <li><a href="#chi-tiet-san-pham">CHI TIẾT SẢN PHẨM</a></li>
+                        <li><a href="#hinh-thuc-mua-hang">HÌNH THỨC MUA HÀNG</a></li>
+                        <li><a href="#hinh-thuc-thanh-toan">HÌNH THỨC THANH TOÁN</a></li>
+                    </ul>
+                    <div id="chi-tiet-san-pham">
+                        @Html.Raw(Model.Detail)
+                    </div>
+                    <div id="hinh-thuc-mua-hang">
+                        nội dung đang cập nhật
+                    </div>
+                    <div id="hinh-thuc-thanh-toan">
+                        Nội dung đang cập nhật
+                    </div>
+                </div>
+                <div class="product_container">
+                    <h1 class="title_danh_muc">
+                        <span>CÁC SẢN PHẨM Khác</span>
+                    </h1>
+                    <div class="list_product">
+                        <ul>
+                           
+
+                            @foreach (var item in relatedProducts)
+                            {
+                                var url = "/chi-tiet/" + item.MetaTitle + "-" + item.ID;
+                                @*<div class="grid_1_of_4 images_1_of_4">
+                                    <a href="@url"><img src="@item.Image" alt=""></a>
+                                    <div class="price" style="border:none">
+                                        <div class="add-cart" style="float:none">
+                                            <h4><a href="@url">Add to Cart</a></h4>
+                                        </div>
+                                        <div class="clear"></div>
+                                    </div>
+                                </div>*@
+
+                                <li>
+                                    <div class="product_info">
+                                        <div class="product_img">
+                                            <a href="@url" title="@item.Name">
+                                                <img src="@item.Image" alt="@item.Name">
+                                            </a>
+                                        </div>
+                                        <div class="product_content">
+                                            <h3 class="product_name">
+                                                <a href="@url" title="">@item.Name</a>
+                                            </h3>
+
+                                            <div class="price">
+                                                Gía:
+                                                <span class="gia_goc"><del>@item.Price</del>VNĐ</span>
+                                                <span class="gia_ban">@item.PromotionPrice VNĐ</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+
+
+
+
+                            }
+
+
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+

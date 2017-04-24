@@ -1,0 +1,24 @@
+@charset "UTF-8";
+/***********************************
+***************Gallery**************
+************************************ */
+/**Danh mục Image**/
+.dm_img_container {
+  display: block;
+  margin-top: 30px; }
+  .dm_img_container .dm_img_box {
+    margin-left: -13px;
+    margin-right: -13px; }
+    .dm_img_container .dm_img_box li.dm_img_content {
+      float: left;
+      width: 20%;
+      padding-left: 13px;
+      padding-right: 13px; }
+
+.dm_img_info {
+  display: block;
+  width: 100%;
+  background: #ccd68c; }
+
+.dm_img_thumb {
+  position: relative; }

@@ -1,0 +1,4 @@
+D:\angular\TuanGay\Code\Common\bin\Debug\Common.dll
+D:\angular\TuanGay\Code\Common\bin\Debug\Common.pdb
+D:\angular\TuanGay\Code\Common\obj\Debug\Common.dll
+D:\angular\TuanGay\Code\Common\obj\Debug\Common.pdb
