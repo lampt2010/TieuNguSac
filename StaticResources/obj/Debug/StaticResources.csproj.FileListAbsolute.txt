@@ -7,3 +7,4 @@ D:\angular\TuanGay\Code\StaticResources\obj\Debug\StaticResources.csproj.Generat
 D:\angular\TuanGay\Code\StaticResources\obj\Debug\en\StaticResources.resources.dll
 D:\angular\TuanGay\Code\StaticResources\obj\Debug\StaticResources.dll
 D:\angular\TuanGay\Code\StaticResources\obj\Debug\StaticResources.pdb
+D:\angular\TuanGay\Code\StaticResources\obj\Debug\StaticResources.csprojResolveAssemblyReference.cache

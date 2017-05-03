@@ -13,6 +13,7 @@ namespace Model.EF
         }
 
         public virtual DbSet<About> Abouts { get; set; }
+        public virtual DbSet<AlbumImage> AlbumImages { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Contact> Contacts { get; set; }
         public virtual DbSet<Content> Contents { get; set; }
@@ -20,6 +21,7 @@ namespace Model.EF
         public virtual DbSet<Credential> Credentials { get; set; }
         public virtual DbSet<Feedback> Feedbacks { get; set; }
         public virtual DbSet<Footer> Footers { get; set; }
+        public virtual DbSet<Keyword> Keywords { get; set; }
         public virtual DbSet<Language> Languages { get; set; }
         public virtual DbSet<Menu> Menus { get; set; }
         public virtual DbSet<MenuType> MenuTypes { get; set; }
@@ -53,6 +55,10 @@ namespace Model.EF
             modelBuilder.Entity<About>()
                 .Property(e => e.MetaDescriptions)
                 .IsFixedLength();
+
+            modelBuilder.Entity<AlbumImage>()
+                .Property(e => e.MetaTitle)
+                .IsUnicode(false);
 
             modelBuilder.Entity<Category>()
                 .Property(e => e.MetaTitle)
@@ -104,6 +110,10 @@ namespace Model.EF
 
             modelBuilder.Entity<Credential>()
                 .Property(e => e.RoleID)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Keyword>()
+                .Property(e => e.Value)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Language>()

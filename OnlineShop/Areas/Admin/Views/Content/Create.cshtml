@@ -26,7 +26,24 @@
 
         $('#Name').change(function () {
             var m = $(this).val();
-            $('#Alias').val(getSeoTitle(m));
+          
+            $.ajax({
+                url: "@Url.Action("ChangeNameToTag", "Content", new { area = "Admin" })",
+                type: "get",
+                dateType: "Json",
+                data: {
+
+                    s: m,
+                  
+                },
+                success: function (result) {
+                    $('#MetaTitle').val(result.result);
+                },
+                error: function () {
+                    alert('Lổi xảy ra');
+                }
+            });
+
         })
 
 

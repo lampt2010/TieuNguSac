@@ -90,9 +90,11 @@ namespace OnlineShop.Controllers
             return PartialView(model);
         }
 
-        public ActionResult Detail1(long id)
+        public ActionResult Detail1(int id)
         {
+
             var model = new ContentDao().GetByID(id);
+            UpdateViewCount(id);
 
             ViewBag.Tags = new ContentDao().ListTag(id);
             return View(model);
@@ -106,7 +108,10 @@ namespace OnlineShop.Controllers
         }
 
 
-
+        private void UpdateViewCount(int id)
+        {
+            new ContentDao().UpdateViewCount(id);
+        }
 
 
     }

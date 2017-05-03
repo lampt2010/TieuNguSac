@@ -1,0 +1,114 @@
+﻿@model List<Model.EF.ProductCategory>
+@using Model.Dao;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+@functions{
+    public string GetProductByCategory(long? idCategory, int sl)
+    {
+        string s = "";
+        if (idCategory != null)
+        {
+
+            var list = new ProductDao().ListProductByCategory( sl, long.Parse(idCategory.ToString()));
+            if (list.Count > 0)
+            {
+                s += "<ul>";
+            }
+            for (int i = 0; i < list.Count; i++)
+            {
+
+
+                s += "<li>";
+                s += "<div class='product_info'>";
+                s += "<div class='product_img'>";
+                s += "<a href = '/chi-tiet-san-pham/" + list[i].MetaTitle + "-" + list[i].ID + "/' title='" + list[i].Name + "'>";
+                s+="<img src = '"+list[i].Image+"' alt='"+list[i].Name+"'>";
+                s += "</a>";
+                s += "</div>";
+                s += "<div class='product_content'>";
+                s += " <h3 class='product_name'>";
+                s += "<a href ='/chi-tiet-san-pham/" + list[i].MetaTitle + "-" + list[i].ID + "' title='" + list[i].Name + "'>"+list[i].Name+"</a>";
+                s += "</h3>";
+
+                s+="<div class='price'>";
+                s += "Gía:";
+                s += "<span class='gia_goc'><del>" + list[i].Price + "</del>VNĐ</span>";
+                if (list[i].PromotionPrice <= 0) {
+                    s += " <span class='gia_ban'>Liên hệ</span>";
+                } else
+                {
+                    s+= " <span class='gia_ban'>"+list[i].PromotionPrice+" VNĐ</span>";
+                }
+
+
+                s += "</div>";
+                s += "</div>";
+                s += "</div>";
+                s += "</li>";
+
+
+
+            }
+            if (list.Count > 0)
+            {
+                s += "</ul>";
+            }
+
+        }
+
+        return s;
+    }
+}
+
+
+	<!-- Breakcrumb -->
+<section class="breakcrumb">
+    <div class="container">
+        <ul>
+            <li><a href="/" tiltle="trang chủ">Trang chủ</a></li>
+            <li><a href="/san-pham">Sản phẩm</a></li>
+        </ul>
+    </div>
+</section>
+<!--chi tiet sản phẩm -->
+<section class="wraper">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-4 col-xs-12">
+                <div class="sidebar">
+                    @{ Html.RenderAction("ProductCategory1", "Product");}
+                    <div class="adv">
+                        <a href="#" title="trà thảo mộc">
+                            <img src="asset/images/show-room/big-sr.jpg" alt="">
+                            <h3 class="adv-name">Trà thảo mộc</h3>
+                        </a>
+                    </div>
+                    <div class="tintuc_noibat">
+                        <h2 class="title_danh_muc ttnb_title">Tin tức nổi bật</h2>
+                        @{ Html.RenderAction("LoadTapMenu", "Content"); }
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9 col-sm-8 col-xs-12">
+                @foreach (var item in Model)
+                {
+                    <div class="product_container">
+                        <h1 class="title_danh_muc">
+                            <span>@item.Name</span>
+                        </h1>
+                        <div class="list_product">
+                            @Html.Raw(GetProductByCategory(item.ID,10))
+                        </div>
+                    </div>
+
+
+                }
+
+            </div>
+        </div>
+    </div>
+</section>
+

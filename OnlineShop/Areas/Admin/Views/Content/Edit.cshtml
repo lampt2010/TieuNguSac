@@ -18,13 +18,37 @@
             };
             finder.popup();
         })
-
+      
         var editor = CKEDITOR.replace('txtContent', {
             customConfig: '/assets/admin/js/plugins/ckeditor/config.js',
         });
+        $('#Name').change(function () {
+            var m = $(this).val();
+            alert(m);
+            $.ajax({
+                url: "@Url.Action("ChangeNameToTag", "Content", new { area = "Admin" })",
+                type: "get",
+                dateType: "Json",
+                data: {
+
+                    s: m,
+
+                },
+                success: function (result) {
+                 //   alert('thanh cong');
+                    $('#MetaTitle').val(result.result);
+                },
+                error: function () {
+                    alert('Lổi xảy ra');
+                }
+            });
+
+        })
+
     </script>
 }
-@using (Html.BeginForm())
+@using (Html.BeginForm("Edit", "Content", FormMethod.Post,
+                                                  new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
 
@@ -121,7 +145,7 @@
             @Html.LabelFor(model => model.Hot, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <div class="checkbox">
-                    @Html.CheckBox("Status", Model.Hot.HasValue ? Model.Hot : false)
+                    @Html.CheckBox("Hot", Model.Hot.HasValue ? Model.Hot : false)
                     @Html.ValidationMessageFor(model => model.Hot, "", new { @class = "text-danger" })
                 </div>
             </div>

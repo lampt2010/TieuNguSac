@@ -45,5 +45,17 @@ namespace OnlineShop.Controllers
                 });
 
         }
+
+
+
+
+        public ActionResult Index1()
+        {
+            var model = new ContactDao().GetActiveContact();
+            return View(model);
+        }
+
+
+
     }
 }

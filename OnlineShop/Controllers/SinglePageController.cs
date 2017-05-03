@@ -60,5 +60,20 @@ namespace OnlineShop.Controllers
             return View(model);
         }
 
+        public ActionResult LoadDoiTac()
+        {
+            var model = new SinglePageDao().ListAllCustom();
+
+            return View(model);
+        }
+
+        public ActionResult DetailSinglePage(long id)
+        {
+            var model = new SinglePageDao().GetByID(id);
+            return View(model);
+        }
+
+
+
     }
 }

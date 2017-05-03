@@ -17,14 +17,30 @@ namespace OnlineShop
       new { botdetect = @"(.*)BotDetectCaptcha\.ashx" });
 
             routes.MapRoute(
-               name: "Product Category",
-               url: "san-pham/{metatitle}-{cateId}",
-               defaults: new { controller = "Product", action = "Category", id = UrlParameter.Optional },
+               name: "Product Category1",
+               url: "danh-muc-san-pham/{metatitle}-{cateId}",
+               defaults: new { controller = "Product", action = "Category1", id = UrlParameter.Optional },
                namespaces: new[] { "OnlineShop.Controllers" }
            );
+
+            routes.MapRoute(
+           name: "Product Category",
+           url: "danh-sach-san-pham/{metatitle}-{cateId}",
+           defaults: new { controller = "Product", action = "Category1", id = UrlParameter.Optional },
+           namespaces: new[] { "OnlineShop.Controllers" }
+       );
+            routes.MapRoute(
+             name: "Product Index",
+             url: "san-pham",
+             defaults: new { controller = "Product", action = "Index", id = UrlParameter.Optional },
+             namespaces: new[] { "OnlineShop.Controllers" }
+         );
+
+
+
             routes.MapRoute(
               name: "Product Detail",
-              url: "chi-tiet/{metatitle}-{id}",
+              url: "chi-tiet-san-pham/{metatitle}-{id}",
               defaults: new { controller = "Product", action = "Detail1", id = UrlParameter.Optional },
               namespaces: new[] { "OnlineShop.Controllers" }
           );
@@ -37,10 +53,20 @@ namespace OnlineShop
             routes.MapRoute(
              name: "Content Detail",
              url: "tin-tuc/{metatitle}-{id}",
-             defaults: new { controller = "Content", action = "Detail", id = UrlParameter.Optional },
+             defaults: new { controller = "Content", action = "Detail1", id = UrlParameter.Optional },
              namespaces: new[] { "OnlineShop.Controllers" }
          );
+
             routes.MapRoute(
+            name: "chi tiết giới thiệu",
+            url: "gioi-thieu/{metatitle}-{id}",
+            defaults: new { controller = "SinglePage", action = "DetailSinglePage", id = UrlParameter.Optional },
+            namespaces: new[] { "OnlineShop.Controllers" });
+
+
+
+
+          routes.MapRoute(
              name: "About",
              url: "gioi-thieu",
              defaults: new { controller = "SinglePage", action = "Index", id = UrlParameter.Optional },
@@ -49,14 +75,31 @@ namespace OnlineShop
             routes.MapRoute(
           name: "Contact",
           url: "lien-he",
-          defaults: new { controller = "Contact", action = "Index", id = UrlParameter.Optional },
+          defaults: new { controller = "Contact", action = "Index1", id = UrlParameter.Optional },
           namespaces: new[] { "OnlineShop.Controllers" }
       );
 
             routes.MapRoute(
+   name: "Chi tiết hình ảnh",
+   url: "hinh-anh/{metatitle}-{id}",
+   defaults: new { controller = "AlbumImage", action = "Detail", id = UrlParameter.Optional },
+   namespaces: new[] { "OnlineShop.Controllers" }
+);
+
+
+
+            routes.MapRoute(
+   name: "Hình ảnh",
+   url: "hinh-anh",
+   defaults: new { controller = "AlbumImage", action = "Index", id = UrlParameter.Optional },
+   namespaces: new[] { "OnlineShop.Controllers" }
+);
+
+
+            routes.MapRoute(
        name: "News",
        url: "tin-tuc",
-       defaults: new { controller = "Content", action = "Index", id = UrlParameter.Optional },
+       defaults: new { controller = "Content", action = "Index1", id = UrlParameter.Optional },
        namespaces: new[] { "OnlineShop.Controllers" }
    );
             routes.MapRoute(

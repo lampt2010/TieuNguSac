@@ -33,5 +33,9 @@ namespace Model.EF
 
         [StringLength(50)]
         public string Type { get; set; }
+
+        public int? ViewCount { get; set; }
+
+        public DateTime? CreatedDate { get; set; }
     }
 }

@@ -1,148 +1,33 @@
-﻿
+﻿@model List<Model.EF.SinglePage>
 <div class="swiper-wrapper">
-    <div class="swiper-slide">
-        <div class="dm_img_info">
-            <div class="dm_img_thumb">
-                <div class="bg_olay"></div><!-- mask -->
-                <img src="asset/images/show-room/big-sr.jpg" alt="">
-                <div class="dm_img_view">
-                    <p class="number_img">
-                        20 ảnh
-                    </p>
-                    <p class="total_view">1.34447 lượt xem</p>
+    @foreach (var item in Model)
+    {
+        <div class="swiper-slide">
+            <div class="dm_img_info">
+                <div class="dm_img_thumb">
+                    <div class="bg_olay"></div><!-- mask -->
+                    <img src="asset/images/show-room/big-sr.jpg" alt="">
+                    <div class="dm_img_view">
+                       
+                        <p class="total_view">@item lượt xem</p>
+                    </div>
+                    <div class="icon_img_thumb">
+                        <img src="@item.Image" alt="">
+                    </div>
                 </div>
-                <div class="icon_img_thumb">
-                    <img src="asset/images/icon/icon-video.png" alt="">
+                <div class="dm_img_name">
+                    <h3 class="dm_img_title">
+                        <a href="#" title="">
+                          @item.Name
+                        </a>
+                    </h3>
                 </div>
-            </div>
-            <div class="dm_img_name">
-                <h3 class="dm_img_title">
-                    <a href="#" title="">
-                        Uống trà thường xuyên có thể đẩy lùi nguy cơ tử vong
-                    </a>
-                </h3>
             </div>
         </div>
-    </div>
-    <div class="swiper-slide">
-        <div class="dm_img_info">
-            <div class="dm_img_thumb">
-                <div class="bg_olay"></div><!-- mask -->
-                <img src="asset/images/show-room/big-sr.jpg" alt="">
-                <div class="dm_img_view">
-                    <p class="number_img">
-                        20 ảnh
-                    </p>
-                    <p class="total_view">1.34447 lượt xem</p>
-                </div>
-                <div class="icon_img_thumb">
-                    <img src="asset/images/icon/icon-video.png" alt="">
-                </div>
-            </div>
-            <div class="dm_img_name">
-                <h3 class="dm_img_title">
-                    <a href="#" title="">
-                        Uống trà thường xuyên có thể đẩy lùi nguy cơ tử vong
-                    </a>
-                </h3>
-            </div>
-        </div>
-    </div>
-    <div class="swiper-slide">
-        <div class="dm_img_info">
-            <div class="dm_img_thumb">
-                <div class="bg_olay"></div><!-- mask -->
-                <img src="asset/images/show-room/big-sr.jpg" alt="">
-                <div class="dm_img_view">
-                    <p class="number_img">
-                        20 ảnh
-                    </p>
-                    <p class="total_view">1.34447 lượt xem</p>
-                </div>
-                <div class="icon_img_thumb">
-                    <img src="asset/images/icon/icon-video.png" alt="">
-                </div>
-            </div>
-            <div class="dm_img_name">
-                <h3 class="dm_img_title">
-                    <a href="#" title="">
-                        Uống trà thường xuyên có thể đẩy lùi nguy cơ tử vong
-                    </a>
-                </h3>
-            </div>
-        </div>
-    </div>
-    <div class="swiper-slide">
-        <div class="dm_img_info">
-            <div class="dm_img_thumb">
-                <div class="bg_olay"></div><!-- mask -->
-                <img src="asset/images/show-room/big-sr.jpg" alt="">
-                <div class="dm_img_view">
-                    <p class="number_img">
-                        20 ảnh
-                    </p>
-                    <p class="total_view">1.34447 lượt xem</p>
-                </div>
-                <div class="icon_img_thumb">
-                    <img src="asset/images/icon/icon-video.png" alt="">
-                </div>
-            </div>
-            <div class="dm_img_name">
-                <h3 class="dm_img_title">
-                    <a href="#" title="">
-                        Uống trà thường xuyên có thể đẩy lùi nguy cơ tử vong
-                    </a>
-                </h3>
-            </div>
-        </div>
-    </div>
-    <div class="swiper-slide">
-        <div class="dm_img_info">
-            <div class="dm_img_thumb">
-                <div class="bg_olay"></div><!-- mask -->
-                <img src="asset/images/show-room/big-sr.jpg" alt="">
-                <div class="dm_img_view">
-                    <p class="number_img">
-                        20 ảnh
-                    </p>
-                    <p class="total_view">1.34447 lượt xem</p>
-                </div>
-                <div class="icon_img_thumb">
-                    <img src="asset/images/icon/icon-video.png" alt="">
-                </div>
-            </div>
-            <div class="dm_img_name">
-                <h3 class="dm_img_title">
-                    <a href="#" title="">
-                        Uống trà thường xuyên có thể đẩy lùi nguy cơ tử vong
-                    </a>
-                </h3>
-            </div>
-        </div>
-    </div>
-    <div class="swiper-slide">
-        <div class="dm_img_info">
-            <div class="dm_img_thumb">
-                <div class="bg_olay"></div><!-- mask -->
-                <img src="asset/images/show-room/big-sr.jpg" alt="">
-                <div class="dm_img_view">
-                    <p class="number_img">
-                        20 ảnh
-                    </p>
-                    <p class="total_view">1.34447 lượt xem</p>
-                </div>
-                <div class="icon_img_thumb">
-                    <img src="asset/images/icon/icon-video.png" alt="">
-                </div>
-            </div>
-            <div class="dm_img_name">
-                <h3 class="dm_img_title">
-                    <a href="#" title="">
-                        Uống trà thường xuyên có thể đẩy lùi nguy cơ tử vong
-                    </a>
-                </h3>
-            </div>
-        </div>
-    </div>
+
+    }
+
+
+    
 </div>
 

@@ -27,7 +27,7 @@
 
             s += "<div class='home_news_info'>";
             s += "<h3 class='home_news_name'>";
-            s += "<a href = '/tin-tuc/" + list[0].MetaTitle + "-d." + list[0].ID + "' title='" + list[0].Name + "'>" + list[0].Name + "</a>";
+            s += "<a href = '/tin-tuc/" + list[0].MetaTitle + "-" + list[0].ID + "' title='" + list[0].Name + "'>" + list[0].Name + "</a>";
             s += "    </h3>";
             s += "<p class='date'>" + list[0].CreatedDate.ToString() + " - " + list[0].ViewCount + " lượt xem</p>";
             s += "<p class='desc'>";
@@ -43,7 +43,7 @@
         }
         for(int i = 1; i < list.Count; i++)
         {
-            s+= "<li><a href = 'tin-tuc/"+list[i].MetaTitle+"-d."+list[i].ID+"' title='"+list[0].Name+"'>"+list[i].Name+"</a> <span>("+list[i].ViewCount+" lượt xem)</span></li>";
+            s+= "<li><a href = 'tin-tuc/"+list[i].MetaTitle+"-"+list[i].ID+"' title='"+list[0].Name+"'>"+list[i].Name+"</a> <span>("+list[i].ViewCount+" lượt xem)</span></li>";
         }
 
         s+="</ul>";
@@ -116,9 +116,9 @@
     <div class="home_news_container">
         <div class="home_news_title">
             <h2 class="title">Trà và sức khỏe</h2>
-            <span><a href="/tin-tuc/@item.MetaTitle-c.@item.ID" title="">Xem tất cả ></a></span>
+            <span><a href="/danh-muc-tin-tuc/@item.MetaTitle-@item.ID" title="">Xem tất cả ></a></span>
         </div>
-        @GetContent(item.ID)
+        @Html.Raw(GetContent(item.ID))
     </div>
 
 

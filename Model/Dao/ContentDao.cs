@@ -30,6 +30,12 @@ namespace Model.Dao
             return model.OrderByDescending(x => x.CreatedDate).ToPagedList(page, pageSize);
         }
 
+        public void UpdateViewCount(int id)
+        {
+            var model = db.Contents.Find(id);
+            model.ViewCount = model.ViewCount + 1;
+            db.SaveChanges();
+        }
 
         public List<Content> GetContentNew(int sl)
         { 
@@ -66,6 +72,15 @@ namespace Model.Dao
         }
 
 
+        public List<Content> GetContentByCategory(long idCategory, int sl,long id)
+        {
+
+
+            var model = db.Contents.Where(x => x.CategoryID == idCategory& x.ID!=id).Take(sl).ToList();
+
+
+            return model.OrderByDescending(x => x.CreatedDate).ToList();
+        }
 
 
 

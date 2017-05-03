@@ -1,4 +1,6 @@
-﻿using Model.Dao;
+﻿
+using Common;
+using Model.Dao;
 using Model.EF;
 using OnlineShop.Common;
 using System;
@@ -62,9 +64,9 @@ namespace OnlineShop.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                var session = (UserLogin)Session[CommonConstants.USER_SESSION];
+                var session = (UserLogin)Session[OnlineShop.Common.CommonConstants.USER_SESSION];
                 model.CreatedBy = session.UserName;
-                var culture = Session[CommonConstants.CurrentCulture];
+                var culture = Session[OnlineShop.Common.CommonConstants.CurrentCulture];
                 model.Language = culture.ToString();
                 new ContentDao().Create(model);
                 return RedirectToAction("Index");
@@ -79,5 +81,15 @@ namespace OnlineShop.Areas.Admin.Controllers
             var dao = new CategoryDao();
             ViewBag.CategoryID = new SelectList(dao.ListAll(), "ID", "Name", selectedId);
         }
+
+
+       
+        public ActionResult ChangeNameToTag(string s)
+        {
+            string tag = StringHelper.ToUnsignString(s);
+
+            return Json(new { result = tag },JsonRequestBehavior.AllowGet);
+        }
+
     }
 }

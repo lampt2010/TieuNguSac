@@ -5,19 +5,23 @@
     Layout = "~/Views/Shared/_Layout1.cshtml";
 }
 @functions{
-        public string GetContentWithCategory(long idCategory, int sl)
+        public string GetContentWithCategory(long? idCategory, int sl,long id)
         {
             string s = "";
-            var list = new ContentDao().GetContentByCategory(idCategory, sl);
-
-            for (int i = 0; i < list.Count; i++)
+            if (idCategory != null)
             {
-                s += "<li>< a href = '/tin-tuc/" + list[0].MetaTitle + "-d." + list[0].ID + "' title =' " + list[i].Name + "'>" + list[0].Name + " </a>< span > (" + list[0].ViewCount + " lượt xem)< span ></li>";
+
+                var list = new ContentDao().GetContentByCategory(long.Parse(idCategory.ToString()), sl,id);
+
+                for (int i = 0; i < list.Count; i++)
+                {
+                    s += "<li><a href = '/tin-tuc/" + list[i].MetaTitle + "-" + list[i].ID + "' title =' " + list[i].Name + "'>" + list[i].Name + " </a><span> (" + list[i].ViewCount + " lượt xem)</span ></li>";
+                }
             }
 
             return s;
         }
-  }
+    }
 
 <!-- Breakcrumb -->
 <section class="breakcrumb">
@@ -78,7 +82,7 @@
                         <a href = "#" id= "back-to-top" >
 
 
-                              < img src= "asset/images/icon/icon-back-to-top.png" alt= "" >
+                              <img src= "asset/images/icon/icon-back-to-top.png" alt= "" >
                               Lên đầu trang
                         </a>
                     </div>
@@ -108,7 +112,7 @@
                 <div class="ralate_post">
                     <h2 class="relate_title">Bài viết cùng chuyên mục</h2>
                     <ul>
-                        @GetContentWithCategory(Model.CategoryID, 4);
+                        @Html.Raw(GetContentWithCategory(Model.CategoryID, 4,Model.ID));
                     </ul>
                 </div>
             </div>

@@ -90,6 +90,8 @@ namespace OnlineShop.Areas.Admin.Controllers
             // var dao = new ProductCategoryDao();
             items.Insert(0, (new SelectListItem { Text = "Video", Value = "Video" }));
             items.Insert(1, (new SelectListItem { Text = "Content", Value = "Content" }));
+            items.Insert(2, (new SelectListItem { Text = "Custom", Value = "Customer" }));
+
             ViewBag.Type = new SelectList(items.ToList(), "Value", "Text", TargetselectedId);
 
         }

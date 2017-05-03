@@ -15,13 +15,10 @@
     <title>@ViewBag.Title</title>
 </head>
 <body>
-    
     @{ Html.RenderAction("TopMenu1", "Home");}
 
     @{ Html.RenderAction("Slide1", "Home");}
   
-
-
 
         @RenderBody()
     
@@ -31,9 +28,22 @@
 
 
 
+    <!-- gallery light box -->
+    <script type="text/javascript">
+        jQuery(function($) {
+        	var gl = jQuery.noConflict();
+            gl('#lightgallery').lightGallery();
+        });
+    </script>
+    <script src="/assets/js/gallery_lightbox/lightgallery.min.js"></script>
+    <script src="/assets/js/gallery_lightbox/lg-fullscreen.min.js"></script>
+    <script src="/assets/js/gallery_lightbox/lg-thumbnail.min.js"></script>
+    <script src="/assets/js/gallery_lightbox/lg-autoplay.min.js"></script>
+    <script src="/assets/js/gallery_lightbox/lg-zoom.min.js"></script>
+    <script src="/assets/js/gallery_lightbox/lg-pager.min.js"></script>
+    <script src="/assets/js/gallery_lightbox/jquery.mousewheel.min.js"></script>
 
-
-
+    <!-- End gallery light box -->
     <!-- End footer -->
     <script src="/assets/js/swiper/swiper.min.js"></script>
     <script src="/assets/js/responsive_top_menu.js"></script>

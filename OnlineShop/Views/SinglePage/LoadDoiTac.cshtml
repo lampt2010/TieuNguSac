@@ -1,0 +1,23 @@
+﻿
+@model List<Model.EF.SinglePage>
+<div class="cf_doitac">
+    <div class="cf_title border_bottom margin_bottom">
+        <h4 class="header_title">ĐỐI TÁC KHÁCH HÀNG</h4>
+        <div class="doitac_control">
+            <div class="doitac_button doitac_bt_next"><i class="fa fa-angle-left" aria-hidden="true"></i></div>
+            <div class="doitac_button doitac_bt_prev"><i class="fa fa-angle-right" aria-hidden="true"></i></div>
+        </div>
+    </div>
+    <div class="doitac_box swiper-container">
+        <div class="swiper-wrapper">
+           @foreach (var item in Model)
+           {
+            <div class="swiper-slide">
+            <div class="doitac_logo"><a href="@item.MetaTitle" title="@item.Name"><img src="@item.Image" alt="@item.Name"></a>
+                </div>
+            </div>
+
+           }
+        </div>
+    </div>
+</div>

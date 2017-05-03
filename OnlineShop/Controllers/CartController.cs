@@ -121,7 +121,7 @@ namespace OnlineShop.Controllers
         }
 
         [HttpPost]
-        public ActionResult Payment(string shipName,string mobile,string address,string email)
+        public ActionResult Payment(string shipName,string mobile,string address,string email,string content)
         {
             var order = new Order();
             order.CreatedDate = DateTime.Now;
@@ -129,7 +129,8 @@ namespace OnlineShop.Controllers
             order.ShipMobile = mobile;
             order.ShipName = shipName;
             order.ShipEmail = email;
-
+            order.Status = 0;
+            order.Content = content;
             try
             {
                 var id = new OrderDao().Insert(order);
@@ -147,7 +148,7 @@ namespace OnlineShop.Controllers
 
                     total += (item.Product.Price.GetValueOrDefault(0) * item.Quantity);
                 }
-                string content = System.IO.File.ReadAllText(Server.MapPath("~/assets/client/template/neworder.html"));
+                string content1 = System.IO.File.ReadAllText(Server.MapPath("~/assets/client/template/neworder.html"));
 
                 content = content.Replace("{{CustomerName}}", shipName);
                 content = content.Replace("{{Phone}}", mobile);
@@ -156,8 +157,8 @@ namespace OnlineShop.Controllers
                 content = content.Replace("{{Total}}", total.ToString("N0"));
                 var toEmail = ConfigurationManager.AppSettings["ToEmailAddress"].ToString();
 
-                new MailHelper().SendMail(email, "Đơn hàng mới từ OnlineShop", content);
-                new MailHelper().SendMail(toEmail, "Đơn hàng mới từ OnlineShop", content);
+                new MailHelper().SendMail(email, "Đơn hàng mới từ OnlineShop", content1);
+                new MailHelper().SendMail(toEmail, "Đơn hàng mới từ OnlineShop", content1);
             }
             catch (Exception ex)
             {
@@ -220,7 +221,17 @@ namespace OnlineShop.Controllers
             return Json(new { result = "t" });
         }
 
+        public ActionResult CartInfo()
+        {
+            var cart = Session[CartSession];
+            var list = new List<CartItem>();
+            if (cart != null)
+            {
+                list = (List<CartItem>)cart;
+            }
 
+            return PartialView(list);
+        }
 
     }
 }

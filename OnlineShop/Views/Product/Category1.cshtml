@@ -1,0 +1,177 @@
+﻿@model List<Model.ViewModel.ProductViewModel>
+@{
+    var category = (Model.EF.ProductCategory)ViewBag.Category;
+    ViewBag.Title = category.Name;
+   
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+<section class="breakcrumb">
+    <div class="container">
+        <ul>
+            <li><a href="#" tiltle="trang chủ">Trang chủ</a></li>
+            <li><a href="/danh-muc-san-pham/@category.MetaTitle-c.@category.ID">@category.Name</a></li>
+        </ul>
+    </div>
+</section>
+<section class="wraper">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-4 col-xs-12">
+                <div class="sidebar">
+                    @{ Html.RenderAction("ProductCategory1", "Product");}
+                    <div class="adv">
+                        <a href="#" title="trà thảo mộc">
+                            <img src="asset/images/show-room/big-sr.jpg" alt="">
+                            <h3 class="adv-name">Trà thảo mộc</h3>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9 col-sm-8 col-xs-12">
+                <div class="product_container">
+                    <h1 class="title_danh_muc">
+                        <span>@category.Name</span>
+                    </h1>
+                    <div class="list_product">
+                        <ul>
+                            <li>
+                                <div class="product_info">
+                                    <div class="product_img">
+                                        <a href="#" title="">
+                                            <img src="asset/images/category-p/tra-tn/tra-thai-nguyen-01.png" alt="doi-tac-01">
+                                        </a>
+                                    </div>
+                                    <div class="product_content">
+                                        <h3 class="product_name">
+                                            <a href="" title="">Việt Cổ Trà Truyền Thống - Trà búp </a>
+                                        </h3>
+
+                                        <div class="price">
+                                            Gía:
+                                            <span class="gia_goc"><del>200000</del>VNĐ</span>
+                                            <span class="gia_ban">180.000 VNĐ</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="product_info">
+                                    <div class="product_img">
+                                        <a href="#" title="">
+                                            <img src="asset/images/category-p/tra-tn/tra-thai-nguyen-01.png" alt="doi-tac-01">
+                                        </a>
+                                    </div>
+                                    <div class="product_content">
+                                        <h3 class="product_name">
+                                            <a href="" title="">Việt Cổ Trà Truyền Thống - Trà búp </a>
+                                        </h3>
+
+                                        <div class="price">
+                                            Gía:
+                                            <span class="gia_goc"><del>200000</del>VNĐ</span>
+                                            <span class="gia_ban">180.000 VNĐ</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="product_info">
+                                    <div class="product_img">
+                                        <a href="#" title="">
+                                            <img src="asset/images/category-p/tra-tn/tra-thai-nguyen-01.png" alt="doi-tac-01">
+                                        </a>
+                                    </div>
+                                    <div class="product_content">
+                                        <h3 class="product_name">
+                                            <a href="" title="">Việt Cổ Trà Truyền Thống - Trà búp </a>
+                                        </h3>
+
+                                        <div class="price">
+                                            Gía:
+                                            <span class="gia_goc"><del>200000</del>VNĐ</span>
+                                            <span class="gia_ban">180.000 VNĐ</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="product_info">
+                                    <div class="product_img">
+                                        <a href="#" title="">
+                                            <img src="asset/images/category-p/tra-tn/tra-thai-nguyen-01.png" alt="doi-tac-01">
+                                        </a>
+                                    </div>
+                                    <div class="product_content">
+                                        <h3 class="product_name">
+                                            <a href="" title="">Việt Cổ Trà Truyền Thống - Trà búp </a>
+                                        </h3>
+
+                                        <div class="price">
+                                            Gía:
+                                            <span class="gia_goc"><del>200000</del>VNĐ</span>
+                                            <span class="gia_ban">180.000 VNĐ</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clear"></div>
+        <!--Phân trang-->
+        @if (ViewBag.TotalPage > 1)
+        {
+            var pageDisplay = (int)ViewBag.MaxPage;
+            int totalPage = (int)ViewBag.TotalPage;
+            int currentPage = ((int)ViewBag.Page);
+
+            // Create numeric links
+            var startPageIndex = Math.Max(1, currentPage - pageDisplay / 2);
+            var endPageIndex = Math.Min(totalPage, currentPage + pageDisplay / 2);
+
+            var link = "/danh-muc-san-pham/" + category.MetaTitle + "-" + category.ID;
+            <nav>
+                <ul class="pagination">
+                    @if (currentPage > ViewBag.First)
+                {
+                        <li><a href="@link?page=@ViewBag.First" title="Trang đầu" class="first"><i class="fa fa-angle-double-left"></i></a></li>
+                        <li>
+                            <a href="@link?page=@ViewBag.Prev" title="Trang trước" class="prev"><i class="fa fa-angle-left"></i></a>
+                        </li>
+
+                    }
+                    @for (int i = startPageIndex; i <= endPageIndex; i++)
+                    {
+                        if (currentPage == i)
+                        {
+
+                            <li> <a href="@link?page=@i" class="active" title="Trang @i">@i</a></li>
+                        }
+                        else
+                        {
+                            <li><a href="@link?page=@i" title="Trang @i" class="pos">@i</a></li>
+                        }
+                    }
+                    @if (currentPage < totalPage)
+                    {
+                        <li><a href="@link?page=@ViewBag.Next" class="next" title="Trang sau"><i class="fa fa-angle-right"></i></a></li>
+                        <li> <a href="@link?page=@ViewBag.Last" class="last" title="Trang cuối"><i class="fa fa-angle-double-right"></i></a></li>
+                    }
+
+                </ul>
+            </nav>
+
+        }
+        else
+        {
+            <span>Không có bản ghi nào</span>
+        }
+
+
+    </div>
+</section>
+
+

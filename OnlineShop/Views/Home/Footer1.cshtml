@@ -3,29 +3,7 @@
     <!-- top footer -->
     <div class="middle_footer">
         <div class="container">
-            <div class="cf_doitac">
-                <div class="cf_title border_bottom margin_bottom">
-                    <h4 class="header_title">ĐỐI TÁC KHÁCH HÀNG</h4>
-                    <div class="doitac_control">
-                        <div class="doitac_button doitac_bt_next"><i class="fa fa-angle-left" aria-hidden="true"></i></div>
-                        <div class="doitac_button doitac_bt_prev"><i class="fa fa-angle-right" aria-hidden="true"></i></div>
-                    </div>
-                </div>
-                <div class="doitac_box swiper-container">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide"><div class="doitac_logo"><a href="#" title="đối tác 01"><img src="assets/images/brand/brand-01.jpg" alt="doi-tac-01"></a></div></div>
-                        <div class="swiper-slide"><div class="doitac_logo"><a href="#" title="đối tác 01"><img src="assets/images/brand/brand-02.jpg" alt="doi-tac-02"></a></div></div>
-                        <div class="swiper-slide"><div class="doitac_logo"><a href="#" title="đối tác 01"><img src="assets/images/brand/brand-03.jpg" alt="doi-tac-03"></a></div></div>
-                        <div class="swiper-slide"><div class="doitac_logo"><a href="#" title="đối tác 01"><img src="assets/images/brand/brand-04.jpg" alt="doi-tac-04"></a></div></div>
-                        <div class="swiper-slide"><div class="doitac_logo"><a href="#" title="đối tác 01"><img src="assets/images/brand/brand-05.jpg" alt="doi-tac-05"></a></div></div>
-                        <div class="swiper-slide"><div class="doitac_logo"><a href="#" title="đối tác 01"><img src="assets/images/brand/brand-06.jpg" alt="doi-tac-06"></a></div></div>
-                        <div class="swiper-slide"><div class="doitac_logo"><a href="#" title="đối tác 01"><img src="assets/images/brand/brand-07.jpg" alt="doi-tac-07"></a></div></div>
-                        <div class="swiper-slide"><div class="doitac_logo"><a href="#" title="đối tác 01"><img src="assets/images/brand/brand-08.jpg" alt="doi-tac-08"></a></div></div>
-                        <div class="swiper-slide"><div class="doitac_logo"><a href="#" title="đối tác 01"><img src="assets/images/brand/brand-05.jpg" alt="doi-tac-05"></a></div></div>
-                        <div class="swiper-slide"><div class="doitac_logo"><a href="#" title="đối tác 01"><img src="assets/images/brand/brand-06.jpg" alt="doi-tac-06"></a></div></div>
-                    </div>
-                </div>
-            </div>
+            @{ Html.RenderAction("LoadDoiTac", "SinglePage");}
         </div>
     </div>
     <!-- end top footer -->

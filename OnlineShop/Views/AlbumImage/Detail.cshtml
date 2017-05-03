@@ -1,0 +1,60 @@
+﻿@model Model.EF.AlbumImage
+@using  System.Xml.Linq;
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+
+
+    var images = Model.Content;
+    XElement xImages = XElement.Parse(images);
+    List<string> listImagesReturn = new List<string>();
+
+    foreach (XElement element in xImages.Elements())
+    {
+        listImagesReturn.Add(element.Value);
+    }
+}
+
+<!-- Breakcrumb -->
+<section class="breakcrumb">
+    <div class="container">
+        <ul>
+            <li><a href="/" tiltle="trang chủ">Trang chủ</a></li>
+            <li><a href="/hinh-anh">Hình ảnh</a></li>
+        </ul>
+    </div>
+</section>
+<!-- List gioi thieu -->
+<section class="wraper">
+    <div class="container">
+        <div class="gt_tomtat">
+            <h1>THƯ VIỆN ẢNH</h1>
+            <div class="gt_desc">
+                Được áp dụng quy trình sản xuất trà sạch VietGAP về các tiêu chí vệ sinh - an toàn thực phẩm  từ các khâu trồng, chăm sóc, chế biến và đóng gói sản phẩm. Chúng tôi mong muốn đưa đến người tiêu dùng những sản phẩm trà an toàn, có lợi cho sức khỏe.
+            </div>
+        </div>
+        <div class="detail_gallery">
+            <!-- Detail Gallery -->
+            <ul id="lightgallery" class="list-unstyled detail_gallery_box">
+                @foreach(var item in listImagesReturn) { 
+                <li data-src="@item"   data-sub-html="<h4>Fading Light</h4><p>Classic view from Rigwood Jetty on Coniston Water an old archive shot similar to an old post but a little later on.</p>">
+                    <a href="">
+                        <img src="@item">
+                    </a>
+                </li>
+             }
+
+             
+           
+
+
+
+
+            </ul>
+            <!-- Paging -->
+          
+        </div>
+    </div>
+</section>
+
+	<!-- gallery light box -->

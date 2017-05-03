@@ -192,13 +192,16 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AlbumImageController.cs" />
     <Compile Include="Areas\Admin\Controllers\BaseController.cs" />
     <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\ContentController.cs" />
     <Compile Include="Areas\Admin\Controllers\FooterController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\KeywordController.cs" />
     <Compile Include="Areas\Admin\Controllers\LoginController.cs" />
     <Compile Include="Areas\Admin\Controllers\MenuController.cs" />
+    <Compile Include="Areas\Admin\Controllers\OrderController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
     <Compile Include="Areas\Admin\Controllers\SinglePageController.cs" />
     <Compile Include="Areas\Admin\Controllers\SlideController.cs" />
@@ -208,12 +211,14 @@
     <Compile Include="Common\Encryptor.cs" />
     <Compile Include="Common\HasCredentialAttribute.cs" />
     <Compile Include="Controllers\AboutController.cs" />
+    <Compile Include="Controllers\AlbumImageController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\ContentController.cs" />
     <Compile Include="Controllers\FooterController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\KeywordController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\SinglePageController.cs" />
     <Compile Include="Controllers\UserController.cs" />
@@ -232,6 +237,8 @@
     <Content Include="assets\admin\dist\css\sb-admin-2.css" />
     <Content Include="assets\admin\dist\css\timeline.css" />
     <Content Include="assets\admin\dist\js\sb-admin-2.js" />
+    <Content Include="assets\admin\js\controller\AlbumImage.js" />
+    <Content Include="assets\admin\js\controller\Order.js" />
     <Content Include="assets\admin\js\controller\productController.js" />
     <Content Include="assets\admin\js\controller\userController.js" />
     <Content Include="assets\admin\js\jquery.validate.unobtrusive.min.js" />
@@ -1385,6 +1392,12 @@
     <Content Include="Areas\Admin\Views\SinglePage\Index.cshtml" />
     <Content Include="Areas\Admin\Views\SinglePage\Create.cshtml" />
     <Content Include="Areas\Admin\Views\SinglePage\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Order\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\AlbumImage\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\AlbumImage\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Keyword\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Keyword\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Keyword\Edit.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -1450,6 +1463,15 @@
     <Content Include="Views\SinglePage\LoadDanhSachVideo.cshtml" />
     <Content Include="Views\SinglePage\LoadSingleVideo.cshtml" />
     <Content Include="Views\SinglePage\LoadOtherVideo.cshtml" />
+    <Content Include="Views\SinglePage\LoadDoiTac.cshtml" />
+    <Content Include="Views\Product\Category1.cshtml" />
+    <Content Include="Views\Contact\Index1.cshtml" />
+    <Content Include="Views\SinglePage\DetailSinglePage.cshtml" />
+    <Content Include="Views\Product\Index.cshtml" />
+    <Content Include="Views\Cart\CartInfo.cshtml" />
+    <Content Include="Views\AlbumImage\Index.cshtml" />
+    <Content Include="Views\AlbumImage\Detail.cshtml" />
+    <Content Include="Views\Keyword\GetFacebook.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

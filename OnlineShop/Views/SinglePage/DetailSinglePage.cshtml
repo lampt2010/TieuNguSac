@@ -1,0 +1,101 @@
+﻿@model Model.EF.SinglePage
+@{
+    ViewBag.Title = "DetailSinglePage";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+	<!-- Breakcrumb -->
+<section class="breakcrumb">
+    <div class="container">
+        <ul>
+            <li><a href="/" tiltle="trang chủ">Trang chủ</a></li>
+            <li><a href="/gioi-thieu" tiltle="giới thiệu">Giới thiệu</a></li>
+            <li><a href="/gioi-thieu/@Model.MetaTitle-@Model.Id"> @Model.Name</a></li>
+        </ul>
+    </div>
+</section>
+
+<!--chi tiet sản phẩm -->
+<!--chi tiet sản phẩm -->
+<section class="wraper">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-4 col-xs-12">
+                <div class="sidebar">
+
+                    <div class="adv">
+                        <a href="#" title="trà thảo mộc">
+                            <img src="asset/images/show-room/big-sr.jpg" alt="">
+                            <h3 class="adv-name">Trà thảo mộc</h3>
+                        </a>
+                    </div>
+                    <div class="tintuc_noibat">
+                        <h2 class="title_danh_muc ttnb_title">Tin tức nổi bật</h2>
+                        @{ Html.RenderAction("LoadTapMenu", "Content"); }
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9 col-sm-8 col-xs-12">
+                <!-- Detail new -->
+                <div class="detail_container">
+                    <h1 class="detail_title">@Model.Name</h1>
+                    <div class="detail_box">
+                        <ul>
+                            <li>
+                                <i class="fa fa-table" aria-hidden="true"></i>
+                                <span>Cập nhật: @Model.CreatedDate</span>
+                            </li>
+                            <li>
+                                <i class="fa fa-bar-chart" aria-hidden="true"></i>
+                                <span>Lượt xem: @Model.ViewCount</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="detail_content">
+                        @Html.Raw(Model.Content)
+
+                    </div>
+                </div>
+                <!-- Social share -->
+                <div class="detail_dff">
+                    <div class="left_dff">
+                        <a href="#" title="">
+                            <img src="asset/images/icon/icon-back-home.png" alt="">Trang chủ
+                        </a>
+                        <a href="#" id="back-to-top">
+
+
+                            <img src="asset/images/icon/icon-back-to-top.png" alt="">
+                            Lên đầu trang
+                        </a>
+                    </div>
+                    <div class="right_dff">
+                        <span>Chia sẻ:</span>
+                        <ul>
+
+                            <li>
+                                <a href="#" title>
+                                    <i class="fa fa-facebook" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" title>
+                                    <i class="fa fa-google-plus" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" title>
+                                    <i class="fa fa-twitter" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Relate post -->
+             
+            </div>
+        </div>
+    </div>
+</section>
+
+

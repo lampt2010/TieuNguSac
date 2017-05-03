@@ -1,0 +1,73 @@
+﻿@model Model.EF.Contact
+@{
+    ViewBag.Title = "Index1";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+@section jsFooter{
+    <script src="/assets/client/js/controller/contactController.js"></script>
+
+    }
+<!-- Breakcrumb -->
+<section class="breakcrumb">
+    <div class="container">
+        <ul>
+            <li><a href="/" tiltle="trang chủ">Trang chủ</a></li>
+            <li><a href="/lien-he">Liên hệ</a></li>
+        </ul>
+    </div>
+</section>
+<!-- List gioi thieu -->
+<section class="wraper">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9 col-sm-8 col-xs-12">
+                <div class="lh_info">
+                    <div class="lh_note">
+                        Cám ơn quý khách đã ghé thăm <a href="/" title>Tieungusac.com</a>
+                    </div>
+                    @*<h1 class="office_name">
+                        Công ty Cổ phần dịch vụ API Việt nam
+                    </h1>
+                    <p class="lh_add"><b>Địa chỉ:</b> 338B Bà Triệu, Hai Bà Trưng, Hà Nội</p>
+                    <p class="lh_add"><b>Điện thoại:</b> 04.6253.5088 - <b>Hotline:</b> 0967.238.844</p>
+                    <p class="lh_add"><b>Email:</b> checapheviet@gmail.com - <b>Website:</b> www.checapheviet.com</p>*@
+
+                    @Html.Raw(Model.Content)
+
+
+
+
+                    <div class="lh_map">
+                        @{ Html.RenderAction("LoadMap", "Footer");}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-4 col-xs-12">
+                <div class="lh_form">
+                    <div class="lh_note">
+                        Mời bạn điền vào mẫu thư liên lạc và gửi đi cho chúng tôi. Các chuyên viên tư vấn của Thái Tâm Trà sẽ trả lời bạn trong thời gian sớm nhất.
+                    </div>
+                    <form class="cmxform" id="commentForm" method="get" action="">
+                        <p>
+                            <input id="txtName" name="txtName" placeholder="Họ tên *" minlength="2" type="text" required>
+                        </p>
+                        <p>
+                            <input id="txtEmail" placeholder="Email *" type="email" name="txtEmail" required>
+                        </p>
+                        <p>
+                            <input id="txtMobile" placeholder="Điện thoại *" type="text" name="txtMobile" required="">
+                        </p>
+                     
+                        <p>
+                            <textarea id="txtContent" placeholder="Nội dung *" name="txtContent" required></textarea>
+                        </p>
+                        <p>
+                            <input class="submit" type="button" id="btnSend" value="GỬI ĐI">
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

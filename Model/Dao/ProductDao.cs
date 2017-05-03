@@ -78,7 +78,10 @@ namespace Model.Dao
             db.SaveChanges();
         }
 
-
+        public List<Product> ListProductByCategory(int top,long categoryId)
+        {
+            return db.Products.Where(x=>x.CategoryID==categoryId).OrderByDescending(x => x.CreatedDate).Take(top).ToList();
+        }
 
 
 

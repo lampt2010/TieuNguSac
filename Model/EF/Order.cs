@@ -28,5 +28,8 @@ namespace Model.EF
         public string ShipEmail { get; set; }
 
         public int? Status { get; set; }
+
+        [StringLength(250)]
+        public string Content { get; set; }
     }
 }

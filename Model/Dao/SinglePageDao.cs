@@ -31,6 +31,13 @@ namespace Model.Dao
         {
             return db.SinglePages.Where(x => x.Status == true & x.Id!=id).ToList();
         }
+        public List<SinglePage> ListAllCustom()
+        {
+            return db.SinglePages.Where(x => x.Status == true & x.Type=="Customer").ToList();
+        }
+
+
+
         public List<SinglePage> ListAllVideo()
         {
             return db.SinglePages.Where(x => x.Status == true& x.Type=="Video").ToList();
